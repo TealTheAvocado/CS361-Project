@@ -1,0 +1,50 @@
+/* styles.css */
+
+/* Define a font face for PingFang Regular */
+@font-face {
+    font-family: 'PingFang';
+    src: url('https://yourwebsite.com/fonts/PingFang-Regular.ttf') format('truetype');
+}
+
+body {
+    font-family: 'PingFang', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    height: 100vh;
+    margin: 0;
+    padding: 30px;
+}
+#index-content {
+    text-align: center;
+}
+
+button {
+    margin-top: 1.5em;
+    margin-bottom: 2em;
+    color: white;
+    background-color: teal;
+    padding: 13px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 8px;
+    border:none;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+/* Style for the button row */
+.button-row {
+    display: flex;
+    justify-content: space-between;
+}
+/* Style for the home icon link */
+.home-icon {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    font-size: 2px;
+}

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+    <title>About Page</title>
+</head>
+<body>
+    <a href="/">
+    <img src="{{ url_for('static', filename='icon.svg') }}" alt="SVG Icon" class="home-icon">
+    </a>
+<div class="content" id="about-content">
+    <h1>About Me</h1>
+    <p>
+        My name is Flora Zhang. This is my project for CS 361. I chose Shanghainese
+        because my family is from Shanghai, and I know there aren't many resources for
+        learning the language.
+    </p>
+    <div class="button-row">
+        <button onclick="window.location.href='https://ecampus.oregonstate.edu/online-degrees/undergraduate/computer-science-postbacc/';">
+            OSU Computer Science Post-Bacc
+        </button>
+        <button onclick="window.location.href='https://tealtheavocado.github.io/florazhang/';">
+            Personal Website
+        </button>
+                <button onclick="window.location.href='https://www.linkedin.com/in/florazhang24/';">
+            LinkedIn
+        </button>
+    </div>
+</div>
+</body>
+</html>
