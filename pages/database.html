@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Database</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <a href="/">
+    <img src="{{ url_for('static', filename='icon.svg') }}" alt="SVG Icon" class="home-icon">
+    </a>
+    <h1 style="text-align: center;">Database Contents</h1>
+
+    <table>
+        <tr>
+            <th>Shanghainese</th>
+            <th>Phonetics</th>
+            <th>English</th>
+            <th>Category</th>
+        </tr>
+        {% for record in database_records %}
+        <tr>
+            <td>{{ record.shanghainese }}</td>
+            <td>{{ record.phonetics }}</td>
+            <td>{{ record.english }}</td>
+            <td>{{ record.category }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+</body>
+</html>

@@ -2,10 +2,13 @@
 <html>
 <head>
     <title>Add Data</title>
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
 </head>
 <body>
-    <h1>Add Data to the Database</h1>
+    <a href="/">
+    <img src="{{ url_for('static', filename='icon.svg') }}" alt="SVG Icon" class="home-icon">
+    </a>
+    <h1 style="text-align: center;">Add Data to the Database</h1>
 
     <!-- Form for adding data to the database -->
     <form method="POST" action="/add_data">

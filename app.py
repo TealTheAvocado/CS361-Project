@@ -1,11 +1,12 @@
 from flask import Flask, render_template, redirect, url_for, request
 from pymongo import MongoClient
+from pymongo.server_api import ServerApi
 
 app = Flask(__name__, template_folder='pages')
 
-MONGO_URI = "mongodb://florazhang:Flora2185885@cluster.mongodb.net/Cluster0"
-client = MongoClient(MONGO_URI)
-db = client.get_database()
+MONGO_URI = "mongodb+srv://database_owner:DatabasePassword@cluster0.ep9zacz.mongodb.net/?retryWrites=true&w=majority"
+client = MongoClient(MONGO_URI, server_api=ServerApi('1'))
+db = client['flashcards']
 
 DATABASE_PASSWORD = "123123123"
 
@@ -52,6 +53,23 @@ def add_data():
         return "Data added successfully"
 
     return render_template('add_data.html')
+
+@app.route('/database')
+def show_database():
+    # Connect to MongoDB
+    client = MongoClient(MONGO_URI)
+
+    # Choose the database and collection
+    db = client['flashcards']
+    collection = db['flashcards']  # Replace with your collection name
+
+    # Query MongoDB to retrieve the records
+    database_records = list(collection.find({}))
+
+    # Close the MongoDB connection
+    client.close()
+
+    return render_template('database.html', database_records=database_records)
 
 
 if __name__ == '__main__':

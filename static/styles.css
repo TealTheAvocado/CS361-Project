@@ -1,6 +1,5 @@
 /* styles.css */
 
-/* Define a font face for PingFang Regular */
 @font-face {
     font-family: 'PingFang';
     src: url('https://yourwebsite.com/fonts/PingFang-Regular.ttf') format('truetype');
@@ -34,12 +33,18 @@ button {
 button:hover {
     background-color: #0056b3;
 }
-/* Style for the button row */
+
 .button-row {
     display: flex;
     justify-content: space-between;
 }
-/* Style for the home icon link */
+.button-index-row {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
 .home-icon {
     position: absolute;
     top: 10px;
@@ -54,3 +59,12 @@ button:hover {
     text-align: center;
     padding: 10px;
 }
+
+table {
+margin-top: 2em;
+width: 100%;
+}
+ table, th, td {
+      border: 0.5px solid #98A09E;
+      border-collapse: collapse;
+    }
