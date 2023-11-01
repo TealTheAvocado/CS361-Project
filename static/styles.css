@@ -8,13 +8,11 @@
 
 body {
     font-family: 'PingFang', sans-serif;
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
     height: 100vh;
     margin: 0;
     padding: 30px;
 }
+
 #index-content {
     text-align: center;
 }
@@ -47,4 +45,12 @@ button:hover {
     top: 10px;
     left: 10px;
     font-size: 2px;
+}
+
+.bottom-div {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    padding: 10px;
 }

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add Data</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>Add Data to the Database</h1>
+
+    <!-- Form for adding data to the database -->
+    <form method="POST" action="/add_data">
+        <label for="shanghainese">Shanghainese</label>
+        <input type="text" id="shanghainese" name="shanghainese" required><br><br>
+        <label for="phonetics">Phonetics</label>
+        <input type="text" id="phonetics" name="phonetics" required><br><br>
+        <label for="English">English</label>
+        <input type="text" id="english" name="english" required><br><br>
+        <label for="category">Category</label>
+        <input type="text" id="category" name="category" required><br><br>
+
+        <input type="submit" value="Add Data">
+    </form>
+</body>
+</html>
