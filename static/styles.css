@@ -68,3 +68,129 @@ width: 100%;
       border: 0.5px solid #98A09E;
       border-collapse: collapse;
     }
+
+.flashcard-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 20px; /* Add spacing between columns */
+    margin-top: 20px; /* Add spacing between rows */
+}
+
+.flashcard {
+    width: 300px; /* Increase flashcard width */
+    height: 200px; /* Increase flashcard height */
+    perspective: 1000px;
+    cursor: pointer;
+    margin: 0 auto; /* Horizontally center the flashcards */
+}
+
+.card-inner {
+    width: 100%;
+    height: 100%;
+    transition: transform 0.5s;
+    transform-style: preserve-3d;
+}
+
+.front,
+.back {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    backface-visibility: hidden;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.front {
+    background-color: #f0f0f0;
+    transform: rotateY(0deg);
+}
+
+.back {
+    background-color: #009688;
+    color: #fff;
+    transform: rotateY(180deg);
+}
+
+.flashcard:hover .card-inner {
+    transform: rotateY(180deg);
+}
+
+/* CSS for the pop-up */
+.popup {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+  
+  .popup-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 600px;
+  }
+  
+  .close {
+    float: right;
+    cursor: pointer;
+    font-size: 24px;
+  }
+  
+.big-button {
+    font-size: 24px; 
+    padding: 10px 20px; 
+}
+
+.refresh {
+    text-align: center;
+    margin-top: 20px; 
+}
+
+.bottom-suggest {
+    position: fixed; 
+    bottom: 0;
+    justify-content: center;
+    align-items: flex-end;
+}
+
+.small-button {
+    font-size: 12px;
+    padding: 5px 10px;
+    border-radius: 50%;
+}
+
+.form-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.form-group {
+    flex: 1;
+    margin-right: 10px;
+}
+
+input[type="submit"] {
+    padding: 10px 20px;
+    background-color: teal;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+input[type="submit"]:hover {
+    background-color: #0056b3;
+}

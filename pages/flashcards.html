@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+    <title>Flashcards</title>
+</head>
+<body>
+    <a href="/">
+        <img src="{{ url_for('static', filename='icon.svg') }}" alt="SVG Icon" class="home-icon">
+        </a>
+    <h1 style="text-align: center;">Flashcards</h1>
+    <div class="flashcard-container">
+        {% for card in flashcards %}
+        <div class="flashcard">
+            <div class="card-inner">
+                <div class="front">
+                    <h3>{{ card['shanghainese'] }}</h3>
+                    <p>{{ card['phonetics'] }}</p>
+                </div>
+                <div class="back">
+                    <h3>{{ card['english'] }}</h3>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    <div class="refresh">
+    <button id="refreshButton" class="big-button">Refresh Page</button>
+    </div>
+    <div class="bottom-suggest" >
+    <button id="open-popup">Want to suggest a phrase?</button>
+<div class="popup" id="suggestion-popup">
+  <div class="popup-content">
+    <span class="close" id="close-popup">&times;</span>
+    <h2>Enter your suggestion here!</h2>
+    <form id="suggestion-form">
+        <div class="form-row">
+            <div class="form-group">
+                <label for="suggestion-shanghainese">Shanghainese:</label>
+                <input type="text" id="suggestion-shanghainese" name="suggestion-shanghainese" required>
+            </div>
+            <div class="form-group">
+                <label for="suggestion-phonetics">Phonetics:</label>
+                <input type="text" id="suggestion-phonetics" name="suggestion-phonetics" required>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group">
+                <label for="suggestion-english">English:</label>
+                <input type="text" id="suggestion-english" name="suggestion-english" required>
+            </div>
+            <div class="form-group">
+                <label for="suggestion-category">Category:</label>
+                <input type="text" id="suggestion-category" name="suggestion-category" required>
+            </div>
+        </div>
+        <input type="submit" value="Submit">
+    </form>
+    
+  </div>
+</div>
+<script>
+    // JavaScript to control the pop-up
+    document.getElementById("open-popup").addEventListener("click", function() {
+    document.getElementById("suggestion-popup").style.display = "block";
+    });
+
+    document.getElementById("close-popup").addEventListener("click", function() {
+    document.getElementById("suggestion-popup").style.display = "none";
+    });
+
+    // Handle form submission
+    document.getElementById("suggestion-form").addEventListener("submit", function(e) {
+    e.preventDefault();
+    
+    // Get form input values
+    const shanghainese = document.getElementById("suggestion-shanghainese").value;
+    const phonetics = document.getElementById("suggestion-phonetics").value;
+    const english = document.getElementById("suggestion-english").value;
+    const category = document.getElementById("suggestion-category").value;
+    
+    // Close the pop-up when the form is submitted
+    document.getElementById("suggestion-popup").style.display = "none";
+    
+    // Clear the form inputs
+    document.getElementById("suggestion-form").reset();
+    });
+      // Get the button element by its ID
+  const refreshButton = document.getElementById('refreshButton');
+
+// Add a click event listener to the button
+refreshButton.addEventListener('click', () => {
+  // Display a confirmation dialog
+  const isConfirmed = confirm('Are you sure you want to refresh the page?');
+
+  // If the user confirms, refresh the page
+  if (isConfirmed) {
+    location.reload();
+  }
+    });
+</script>
+</div>
+</body>
+</html>
