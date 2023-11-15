@@ -71,18 +71,17 @@ width: 100%;
 
 .flashcard-container {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-gap: 20px; /* Add spacing between columns */
-    margin-top: 20px; /* Add spacing between rows */
+    grid-template-columns: repeat(3, 1fr); /* Adjust to 3 columns */
+    grid-gap: 20px; /* Adjust spacing if needed */
+    margin-top: 20px; /* Keep or adjust spacing between rows */
 }
 
 .flashcard {
-    width: 300px; /* Increase flashcard width */
-    height: 200px; /* Increase flashcard height */
-    perspective: 1000px;
-    cursor: pointer;
-    margin: 0 auto; /* Horizontally center the flashcards */
+    width: auto; /* Adjust width as needed, could be smaller */
+    height: 200px; /* Keep or adjust height as needed */
+    /* Other styles... */
 }
+    
 
 .card-inner {
     width: 100%;
