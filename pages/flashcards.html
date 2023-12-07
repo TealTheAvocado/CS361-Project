@@ -3,10 +3,11 @@
 <head>
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
     <title>Flashcards</title>
+    <script src="{{ url_for('static', filename='darkmode.js') }}"></script>
 </head>
 <body>
     <a href="/">
-        <img src="{{ url_for('static', filename='icon.svg') }}" alt="SVG Icon" class="home-icon">
+        <img id="themeIcon" src="{{ url_for('static', filename='iconB.svg') }}" alt="SVG Icon" class="home-icon">
         </a>
     <h1 style="text-align: center;">Flashcards</h1>
     <div class="flashcard-container">
@@ -29,6 +30,7 @@
     </div>
     <div class="bottom-suggest" >
     <button id="open-popup">Want to suggest a phrase?</button>
+    <button id="darkModeToggleBtn">Toggle Dark Mode</button>
 <div class="popup" id="suggestion-popup">
   <div class="popup-content">
     <span class="close" id="close-popup">&times;</span>
@@ -98,7 +100,41 @@ refreshButton.addEventListener('click', () => {
     location.reload();
   }
     });
+
 </script>
+<script>
+    // Function to toggle dark mode and update icon
+    function toggleDarkMode() {
+      const isDarkModeEnabled = document.body.classList.toggle('dark-mode');
+      const themeIcon = document.getElementById('themeIcon');
+  
+      if (isDarkModeEnabled) {
+        localStorage.setItem('darkMode', 'enabled');
+        themeIcon.src = "{{ url_for('static', filename='iconW.svg') }}";
+      } else {
+        localStorage.setItem('darkMode', 'disabled');
+        themeIcon.src = "{{ url_for('static', filename='iconB.svg') }}";
+      }
+    }
+  
+    // Function to initialize the dark mode based on local storage
+    function initializeDarkMode() {
+      const themeIcon = document.getElementById('themeIcon');
+      if (localStorage.getItem('darkMode') === 'enabled') {
+        document.body.classList.add('dark-mode');
+        themeIcon.src = "{{ url_for('static', filename='iconW.svg') }}";
+      } else {
+        themeIcon.src = "{{ url_for('static', filename='iconB.svg') }}";
+      }
+    }
+  
+    // Event listeners
+    document.addEventListener('DOMContentLoaded', function() {
+      initializeDarkMode();
+      document.getElementById('darkModeToggleBtn').addEventListener('click', toggleDarkMode);
+    });
+  </script>
+  
 </div>
 </body>
 </html>

@@ -1,8 +1,23 @@
-/* styles.css */
+:root {
+    --icon-stroke-color: black; /* default color */
+  }
+.dark-mode{
+--icon-stroke-color: white; /* color in dark mode */
 
-@font-face {
-    font-family: 'PingFang';
-    src: url('https://yourwebsite.com/fonts/PingFang-Regular.ttf') format('truetype');
+}
+body.dark-mode {
+    background-color: #333;
+    color: white;
+    /* Add other dark mode styles here */
+}
+/* Dark Mode */
+body.dark-mode .flashcard .front {
+    background-color: #333; /* Dark mode front color */
+}
+
+body.dark-mode .flashcard .back {
+    background-color: teal; /* Dark mode back color */
+    color: #fff; /* Text color for the back in dark mode */
 }
 
 body {
@@ -11,7 +26,6 @@ body {
     margin: 0;
     padding: 30px;
 }
-
 #index-content {
     text-align: center;
 }
@@ -120,6 +134,16 @@ width: 100%;
     transform: rotateY(180deg);
 }
 
+/* Light Mode */
+.flashcard .front {
+    background-color: #f0f0f0; /* Light mode front color */
+}
+
+.flashcard .back {
+    background-color: #009688; /* Light mode back color */
+    color: #fff; /* Text color for the back in light mode */
+}
+
 /* CSS for the pop-up */
 .popup {
     display: none;
@@ -193,3 +217,12 @@ input[type="submit"] {
 input[type="submit"]:hover {
     background-color: #0056b3;
 }
+
+.icon {
+    stroke: black; /* Default color */
+  }
+  
+  .dark-mode .icon {
+    stroke: white; /* Color for dark mode */
+  }
+  
