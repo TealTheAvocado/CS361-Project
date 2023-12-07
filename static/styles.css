@@ -226,3 +226,19 @@ input[type="submit"]:hover {
     stroke: white; /* Color for dark mode */
   }
   
+/* Dark Mode styles for the pop-up */
+body.dark-mode .popup-content {
+    background-color: #333; /* Dark background for the pop-up */
+    color: white; /* Light text color for readability */
+}
+
+body.dark-mode .form-group input[type="text"],
+body.dark-mode .form-group input[type="submit"] {
+    background-color: #555; /* Dark background for input fields */
+    color: white; /* Light text color */
+    border-color: #777; /* Darker border for inputs */
+}
+
+body.dark-mode .close {
+    color: white; /* Light color for the close button */
+}
