@@ -1,8 +1,9 @@
-from flask import Flask, render_template, redirect, url_for, request
+from flask import Flask, render_template, redirect, url_for, request, jsonify
 from pymongo.mongo_client import MongoClient
 from pymongo.server_api import ServerApi
 from urllib.parse import quote_plus
 import requests
+import random
 
 app = Flask(__name__, template_folder='pages')
 
@@ -11,16 +12,25 @@ client = MongoClient(MONGO_URI, server_api = ServerApi('1'))
 db = client.flashcards
 collection = db.flashcards
 
-def get_data_from_microservice():
-    microservice_url = 'http://127.0.0.1:5002/get_data'
-    response = requests.get(microservice_url)
 
-    if response.status_code == 200:
-        data = response.json()
-        return data
-    else:
-        return "Failed to fetch data from the microservice."
-    
+# Function to connect to MongoDB and retrieve data
+def get_data_from_mongodb():
+    data = list(collection.find({}))
+    return data
+def get_data():
+    data = get_data_from_mongodb()
+    selected_flashcards = random.sample(data, 6)
+    flashcards = []
+    for item in selected_flashcards:
+        flashcard = {
+            'shanghainese': item.get('shanghainese', ''),
+            'phonetics': item.get('phonetics', ''),
+            'english': item.get('english', ''),
+            'category': item.get('category', '')
+        }
+        flashcards.append(flashcard)
+    return flashcards  # Return the list directly
+
 @app.route('/')
 def index():
     return render_template('index.html')
@@ -29,12 +39,10 @@ def index():
 def about():
     return render_template('about.html')
 
-@app.route('/flashcards')
+@app.route('/flashcards', methods=['GET'])
 def display_flashcards():
-    # Display blank flashcards for now
-    flashcards = get_data_from_microservice()
+    flashcards = get_data()
     return render_template('flashcards.html', flashcards=flashcards)
-
 
 @app.route('/database')
 def show_database():
